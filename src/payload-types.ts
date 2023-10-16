@@ -9,6 +9,7 @@
 export interface Config {
   collections: {
     users: User;
+    orders: Order;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -26,6 +27,13 @@ export interface User {
   loginAttempts?: number;
   lockUntil?: string;
   password: string;
+}
+export interface Order {
+  id: string;
+  total: number;
+  placedBy: string | User;
+  updatedAt: string;
+  createdAt: string;
 }
 export interface PayloadPreference {
   id: string;
@@ -59,6 +67,7 @@ declare module 'payload' {
   export interface GeneratedTypes {
     collections: {
       'users': User
+      'orders': Order
       'payload-preferences': PayloadPreference
       'payload-migrations': PayloadMigration
     }
